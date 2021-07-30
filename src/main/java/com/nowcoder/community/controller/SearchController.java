@@ -35,7 +35,7 @@ public class SearchController implements CommunityConstant {
     public String search(String keyword, Page page, Model model){
         //搜索帖子
         org.springframework.data.domain.Page<DiscussPost> searchResult=
-        elasticsearchService.searchDiscussPost(keyword,page.getCurrent()-1,page.getLimit());
+                elasticsearchService.searchDiscussPost(keyword,page.getCurrent()-1,page.getLimit());
 
         //聚合数据
         List<Map<String,Object>> discussPosts = new ArrayList<>();
@@ -56,7 +56,7 @@ public class SearchController implements CommunityConstant {
         model.addAttribute("keyword",keyword);
 
         //分页信息
-        page.setPath("/search?keyword" +keyword);
+        page.setPath("/search?keyword=" +keyword);
         page.setRows(searchResult == null ? 0 : (int)searchResult.getTotalElements());
         return "/site/search";
     }

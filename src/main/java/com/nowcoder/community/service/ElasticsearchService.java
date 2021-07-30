@@ -28,23 +28,24 @@ import java.util.List;
 
 @Service
 public class ElasticsearchService {
+
     @Autowired
-    private DiscussPostRepository  discussRepository;
+    private DiscussPostRepository discussRepository;
 
     @Autowired
     private ElasticsearchTemplate elasticTemplate;
 
-    public void saveDiscussPost(DiscussPost post){
+    public void saveDiscussPost(DiscussPost post) {
         discussRepository.save(post);
     }
 
-    public void deleteDiscussPost(int id){
+    public void deleteDiscussPost(int id) {
         discussRepository.deleteById(id);
     }
 
     public Page<DiscussPost> searchDiscussPost(String keyword, int current,int limit){
         SearchQuery searchQuery = new NativeSearchQueryBuilder()
-                .withQuery(QueryBuilders.multiMatchQuery("keyword", "title", "content"))
+                .withQuery(QueryBuilders.multiMatchQuery(keyword, "title", "content"))
                 .withSort(SortBuilders.fieldSort("type").order(SortOrder.DESC))
                 .withSort(SortBuilders.fieldSort("score").order(SortOrder.DESC))
                 .withSort(SortBuilders.fieldSort("createTime").order(SortOrder.DESC))
@@ -105,6 +106,6 @@ public class ElasticsearchService {
                         hits.getTotalHits(), response.getAggregations(), response.getScrollId(), hits.getMaxScore());
             }
         });
-
     }
+
 }
