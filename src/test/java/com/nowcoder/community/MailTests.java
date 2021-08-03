@@ -1,6 +1,6 @@
 package com.nowcoder.community;
 
-import com.nowcoder.community.util.Mailclient;
+import com.nowcoder.community.util.MailClient;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,7 @@ import org.thymeleaf.context.Context;
 @ContextConfiguration(classes = CommunityApplication.class)
 public class MailTests {
     @Autowired
-    private Mailclient mailclient;
+    private MailClient mailclient;
     @Autowired
     private TemplateEngine templateEngine;
     @Test

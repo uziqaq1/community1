@@ -12,8 +12,8 @@ import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 
 @Component
-public class Mailclient {
-    private static final Logger logger = LoggerFactory.getLogger(Mailclient.class);
+public class MailClient {
+    private static final Logger logger = LoggerFactory.getLogger(MailClient.class);
     @Autowired
     private JavaMailSender mailSender;
 
