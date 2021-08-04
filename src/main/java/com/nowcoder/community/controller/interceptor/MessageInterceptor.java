@@ -1,4 +1,4 @@
-package com.nowcoder.community.controller;
+package com.nowcoder.community.controller.interceptor;
 
 import com.nowcoder.community.entity.User;
 import com.nowcoder.community.service.MessageService;
